@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Amazing-Balcony - 更新植物</title>
+
+<link rel="icon" href="img/titleicon.jpg">
+<link rel="shortcut icon" href="img/titleicon.jpg">
+  <!-- Custom fonts for this template-->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+  <!-- Custom styles for this template-->
+  <link href="css/sb-admin-2.min.css" rel="stylesheet">
+  <link href="css/anouncestyle.css" rel="stylesheet">
+
+</head>
+
+<body class="bg-gradient-primary">
+
+  <div class="container" id="wrapperconsole">
+
+    <div class="card o-hidden border-0 shadow-lg my-5">
+      <div class="card-body p-0">
+        <!-- Nested Row within Card Body -->
+        <div class="row">
+          <div class="col-lg-5 d-none d-lg-block bg-updateplant-image"></div>
+          <div class="col-lg-7">
+            <div class="p-5">
+              <div class="text-center">
+                <h1 class="h4 text-gray-900 mb-4">修改植物信息!</h1>
+              </div>
+              <form class="user">
+                <div class="form-group row">
+                  <div class="col-sm-6 mb-3 mb-sm-0">
+                    <input type="text" class="form-control form-control-user" id="exampleFirstName" placeholder="植物名称" v-model="sort">
+                  </div>
+                  <div class="col-sm-6">
+                      <input type="text" class="form-control form-control-user" id="exampleLastName" placeholder="是否适合阳台种植：(0/1)" v-model="judge">
+
+                  </div>
+                </div>
+                <div class="form-group">
+                  <textarea style="height: 160px; border-radius: 20px; width: 100%" type="text" placeholder="植物生长信息：" class="mytxtcontent" v-model="infos"></textarea>
+                </div>
+                <div class="form-group row">
+                  <div class="col-sm-6 mb-3 mb-sm-0">
+                    <input type="text" class="form-control form-control-user" id="exampleInputPassword" placeholder="植物添加人：(非必填)">
+                  </div>
+                  <div class="col-sm-6">
+                    <input type="text" class="form-control form-control-user" id="exampleRepeatPassword" placeholder="对管理员的祝福：(非必填)">
+                  </div>
+                </div>
+                <a href="#" class="btn btn-primary btn-user btn-block" v-on:click="doupdate()">
+                  确认修改
+                </a>
+                <hr>
+                <a href="index.html" class="btn btn-google btn-user btn-block">
+                  <i class="fab fa-google fa-fw"></i> 返回主页
+                </a>
+                <a href="index.html" class="btn btn-facebook btn-user btn-block">
+                  <i class="fab fa-facebook-f fa-fw"></i> Share with Facebook
+                </a>
+              </form>
+              <hr>
+              <div class="text-center">
+                <a class="small" href="#">人与鬼</a>
+              </div>
+              <div class="text-center">
+                <a class="small" href="#">世间最远的距离</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Bootstrap core JavaScript-->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="js/sb-admin-2.min.js"></script>
+
+
+  <!-- Vue sources-->
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="js/vue.js"></script>
+
+
+  <script>
+    /* 删除 */
+    function delRow(obj) {
+      $(obj).parent().parent().parent().fadeOut();
+    }
+
+
+  </script>
+
+  <!--/////////////////////////////////////--Vue Start--/////////////////////////////////////-->
+
+  <script>
+    var nsort = localStorage.getItem("sort");
+    var njudge = localStorage.getItem("judge");
+
+    if(njudge == "0"){
+      njudge = "不适宜";
+    } else {
+      njudge = "适宜";
+    }
+
+    var ninfos = localStorage.getItem("infos");
+    var nid = localStorage.getItem("pid");
+
+    var app = new Vue({
+
+
+      el: '#wrapperconsole',
+      data: {
+
+        sort: nsort,
+        judge: njudge,
+        infos: ninfos,
+        id: nid,
+      },
+      methods: {
+
+        doupdate:function(){
+          if(this.judge == "适宜" || this.judge == "适合" || this.judge == "可以" || this.judge == "1"){
+            this.judge = 1;
+          } else {
+            this.judge = 0;
+          }
+
+            axios({
+                method: 'post',
+                url: 'http://47.100.248.118:8888/updateInfos',
+                changeOrigin: false,
+                withCredentials: true,
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                data:{
+                  //email:this.email
+
+                  id: this.id,
+                  sort: this.sort,
+                  judge: this.judge,
+                  infos: this.infos,
+                },
+              //转换数据的方法
+              transformRequest: [
+                function(data) {
+                  let ret = '';
+                  for (let it in data) {
+                    ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&';
+                  }
+                  return ret;
+                }
+              ],
+        }).then(function(response){
+        alert("植物信息修改成功！");
+        window.location.href='icons.html'
+    });
+
+          }
+        }
+      })
+  </script>
+
+  <!--/////////////////////////////////////--Vue End--/////////////////////////////////////-->
+<script>
+
+  function doupdate() {
+
+    var data = new FormData();
+    data.append("id", "13");
+    data.append("sort", "万寿菊");
+    data.append("judge", "1");
+    data.append("infos", "派大星");
+
+    var xhr = new XMLHttpRequest();
+    xhr.withCredentials = true;
+
+    xhr.addEventListener("readystatechange", function() {
+      if(this.readyState === 4) {
+      }
+    });
+
+    xhr.open("POST", "http://47.100.248.118:8888/updateInfos");
+    xhr.send(data);
+
+  }
+
+</script>
+</body>
+
+</html>

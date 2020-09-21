@@ -1,0 +1,18 @@
+img{
+	height: 100px;
+	width: 100px;
+}
+.row1{
+	border-radius: 55%;
+}
+
+.nodata {
+	height: 283px;
+	width: 85%;
+	margin-left: 7%;
+}
+
+.some {
+	height: 60%;
+	width: 100%;
+}

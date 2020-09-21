@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Amazing-Balcony - 用户信息</title>
+
+<link rel="icon" href="img/titleicon.jpg">
+<link rel="shortcut icon" href="img/titleicon.jpg">
+  <!-- Custom fonts for this template-->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+  <!-- Custom styles for this template-->
+  <link href="css/sb-admin-2.min.css" rel="stylesheet">
+
+</head>
+
+<body class="bg-gradient-primary">
+
+  <div class="container" id="content"   style="margin-top: 150px">
+
+    <div class="card o-hidden border-0 shadow-lg my-5">
+      <div class="card-body p-0" >
+        <!-- Nested Row within Card Body -->
+        <div class="row">
+          <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
+          <div class="col-lg-7">
+            <div class="p-5">
+              <div class="text-center">
+                <h1 class="h4 text-gray-900 mb-4">用户信息</h1>
+              </div>
+              <form class="user">
+                <div class="form-group row">
+                  <div class="col-sm-6 mb-3 mb-sm-0">
+                    <input type="text" class="form-control form-control-user" id="exampleFirstName" placeholder="Name: " v-model="username">
+                  </div>
+                  <div class="col-sm-6">
+                    <input type="text" class="form-control form-control-user" id="exampleLastName" placeholder="管理员" >
+                  </div>
+                </div>
+                <div class="form-group">
+                  <input type="email" class="form-control form-control-user" id="exampleInputEmail" placeholder="Email Address" v-model="email">
+                </div>
+                <div class="form-group row">
+                  <div class="col-sm-6 mb-3 mb-sm-0">
+                    <input type="text" class="form-control form-control-user" id="exampleInputPassword" placeholder="Phone" v-model="phone">
+                  </div>
+                  <div class="col-sm-6">
+                    <input type="text" class="form-control form-control-user" id="exampleRepeatPassword" placeholder="杭州" >
+                  </div>
+                </div>
+                <a href="index.html" class="btn btn-primary btn-user btn-block">
+                  返回主页
+                </a>
+                <hr>
+		<p><i>个性签名：</i><br>日子如果没有目标的过下去，<br>只不过是一段散乱的岁月。<br>但如果我们的努力凝聚每一日去实现自己的梦想，<br>散乱的日子就聚积成了我们生命的永恒。</p>
+                <a hidden  href="http://www.google.com" class="btn btn-google btn-user btn-block">
+                  <i class="fab fa-google fa-fw"></i> Share with Google
+                </a>
+                <a hidden href="http://www.facebook.com" class="btn btn-facebook btn-user btn-block">
+                  <i class="fab fa-facebook-f fa-fw"></i> Share with Facebook
+                </a>
+              </form>
+              <hr>
+              <div class="text-center">
+                <a class="small" href="forgot-password.html" v-on:click="doupdate()">修改密码</a>
+              </div>
+<!--              <div class="text-center">
+                <a class="small" href="login.html">Already have an account? Login!</a>
+              </div>-->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Bootstrap core JavaScript-->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="js/sb-admin-2.min.js"></script>
+
+  <script src="js/vue.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+
+<!--////////////////////////////////////////////////////////////////-->
+  <!-- Vue -->
+  <script>
+    var app = new Vue({
+
+      mounted:function(){
+        this.dobox();//需要触发的函数
+      },
+
+      el: '#content',
+      data: {
+        id: "123456",
+        username: "",
+        oldpassword: "",
+        newpassword: "",
+        phone: "",
+        email: ""
+      },
+      methods: {
+        dobox:function(){
+          var that = this;
+          //axios.default.withCredentials=true,
+          //axios.default.changeOrigin=true,
+          axios({
+            method: 'get',
+            url: 'http://47.100.248.118:8888/getUser',
+            changeOrigin: false,
+            withCredentials: true,
+            //crossDomain: true,
+            headers: {
+            },
+          }).then(function(result){
+            var list = result.data;
+            console.log(list.email);
+            that.email = list.email;
+            that.username = list.username;
+            that.phone = list.phone;
+          });
+        },
+
+
+
+        doupdate:function(){
+
+          localStorage.setItem("id",this.id);
+          localStorage.setItem("username",this.username);
+          localStorage.setItem("phone",this.phone);
+          localStorage.setItem("email",this.email);
+        }
+      }
+    })
+  </script>
+<!--////////////////////////////////////////////////////////////////-->
+
+</body>
+
+</html>

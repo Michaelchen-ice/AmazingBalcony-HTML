@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Skecth - 用户花园</title>
+
+<link rel="icon" href="img/titleicon.jpg">
+<link rel="shortcut icon" href="img/titleicon.jpg">
+  <!-- Custom fonts for this template-->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+  <!-- Custom styles for this template-->
+  <link href="css/sb-admin-2.min.css" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+
+  <!-- Page Wrapper -->
+  <div id="wrapper">
+
+    <!-- Sidebar -->
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+      <!-- Sidebar - Brand -->
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+        <div class="sidebar-brand-icon rotate-n-15">
+          <i class="fas fa-laugh-wink"></i>
+        </div>
+        <div class="sidebar-brand-text mx-3" id="userContent">Amazing-Balcony Admin <sup><i v-text="username">!</i></sup></div>
+      </a>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider my-0">
+
+      <!-- Nav Item - Dashboard -->
+      <li class="nav-item active">
+        <a class="nav-link" href="./index.html">
+          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <span>Dashboard</span></a>
+      </li>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider">
+
+      <!-- Heading -->
+      <div class="sidebar-heading">
+        Interface
+      </div>
+
+
+      <!-- Nav Item - Charts -->
+      <li class="nav-item">
+        <a class="nav-link" href="./dataanalysis.html">
+          <i class="fas fa-chart-pie"></i>
+          <span>数据分析</span></a>
+      </li>
+      <!-- Nav Item - Charts -->
+      <li class="nav-item">
+        <a class="nav-link" href="room.html">
+          <i class="fas fa-camera"></i>
+          <span>实时监控</span></a>
+      </li>
+      <!-- Nav Item - Charts -->
+      <li class="nav-item">
+        <a class="nav-link" href="tables.html">
+          <i class="fas fa-fw fa-user-friends"></i>
+          <span>用户管理</span></a>
+      </li>
+      <!-- Nav Item - Charts -->
+      <li class="nav-item">
+        <a class="nav-link" href="alerts.html">
+          <i class="fas fa-fw fa-bell-slash"></i>
+          <span>报警提醒</span></a>
+      </li>
+      <!-- Nav Item - Utilities Collapse Menu -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+          <i class="fas fa-fw fa-info-circle"></i>
+          <span>公告与反馈</span>
+        </a>
+        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Custom Utilities:</h6>
+            <a class="collapse-item" href="./addAnnouncement.html">公告管理</a>
+            <a class="collapse-item" href="./message.html">反馈消息</a>
+          </div>
+        </div>
+      </li>
+      <!-- Nav Item - Charts -->
+      <li class="nav-item">
+        <a class="nav-link" href="map.html">
+          <i class="fas fa-fw fa-map-marker"></i>
+          <span>用户分布</span></a>
+      </li>
+      <!-- Nav Item - Charts -->
+      <li class="nav-item">
+        <a class="nav-link" href="./icons.html">
+          <i class="fas fa-fw fa-file-code"></i>
+          <span>植物档案</span></a>
+      </li>
+      <!-- Nav Item - Pages Collapse Menu -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+          <i class="fas fa-fw fa-cog"></i>
+          <span>个人中心</span>
+        </a>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">信息管理</h6>
+            <a class="collapse-item" href="./user.html">个人信息</a>
+            <a class="collapse-item" href="./forgot-password.html">修改密码</a>
+          </div>
+        </div>
+      </li>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider d-none d-md-block">
+
+      <!-- Sidebar Toggler (Sidebar) -->
+      <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+      </div>
+
+    </ul>
+    <!-- End of Sidebar -->
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+      <!-- Main Content -->
+      <div id="content">
+
+        <!-- Topbar -->
+        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+          <!-- Sidebar Toggle (Topbar) -->
+          <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+            <i class="fa fa-bars"></i>
+          </button>
+
+          <!-- Topbar Search -->
+          <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+            <div class="input-group">
+              <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+              <div class="input-group-append">
+                <button class="btn btn-primary" type="button">
+                  <i class="fas fa-search fa-sm"></i>
+                </button>
+              </div>
+            </div>
+          </form>
+
+          <!-- Topbar Navbar -->
+          <ul class="navbar-nav ml-auto">
+
+            <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+            <li class="nav-item dropdown no-arrow d-sm-none">
+              <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-search fa-fw"></i>
+              </a>
+              <!-- Dropdown - Messages -->
+              <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
+                <form class="form-inline mr-auto w-100 navbar-search">
+                  <div class="input-group">
+                    <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                      <button class="btn btn-primary" type="button">
+                        <i class="fas fa-search fa-sm"></i>
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </li>
+
+            <!-- Nav Item - Alerts -->
+            <li class="nav-item dropdown no-arrow mx-1">
+              <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-bell fa-fw"></i>
+                <!-- Counter - Alerts -->
+                <span class="badge badge-danger badge-counter" v-text="alert_sum">3+</span>
+              </a>
+              <!-- Dropdown - Alerts -->
+              <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
+                <h6 class="dropdown-header">
+                  报警中心
+                </h6>
+
+                <a class="dropdown-item d-flex align-items-center" href="#" v-for="(item,index) in tmdalert">
+                  <div class="mr-3">
+                    <div class="icon-circle bg-warning">
+                      <i class="fas fa-exclamation-triangle text-white"></i>
+                    </div>
+                  </div>
+                  <div>
+                    <!--<div  v-on:click="doupdateAlert(item.id)">-->
+                    <div class="small text-gray-500" v-text="item.create_TIME">December 2, 2019</div>
+                    <i v-text="item.username">Spending Alert: We've noticed unusually high spending for your account.</i>
+                    <i v-text="item.type_NAME">Spending Alert: We've noticed unusually high spending for your account.</i>
+                    <i v-text="item.data">Spending Alert: We've noticed unusually high spending for your account.</i>
+                    <i><i style="color: firebrick">已读：</i><i v-text="item.state">Spending Alert: We've noticed unusually high spending for your account.</i></i>
+                  </div>
+                </a>
+                <a class="dropdown-item text-center small text-gray-500" href="#">Ignore All Alerts</a>
+              </div>
+            </li>
+
+            <!-- Nav Item - Messages -->
+            <li class="nav-item dropdown no-arrow mx-1">
+              <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-envelope fa-fw"></i>
+                <!-- Counter - Messages -->
+                <span class="badge badge-danger badge-counter" v-text="message_sum">7</span>
+              </a>
+              <!-- Dropdown - Messages -->
+              <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
+                <h6 class="dropdown-header">
+                  Message Center
+                </h6>
+                <a class="dropdown-item d-flex align-items-center" href="#" v-for="(item,index) in tmdmessage">
+                  <div class="dropdown-list-image mr-3">
+                    <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60" alt="">
+                    <div class="status-indicator bg-success"></div>
+                  </div>
+                  <div class="font-weight-bold" v-on:click="doupdateMessage(item.id)">
+                    <div class="text-truncate" v-text="item.message">Hi there! I am wondering if you can help me with a problem I've been having.</div>
+                    <div class="text-truncate" >
+                      <i style="color: firebrick">已读：</i><i v-text="item.state"></i></div>
+                    <div class="small text-gray-500"><i v-text="item.username"></i> · <i v-text="item.create_TIME">30min</i></div>
+                  </div>
+                </a>
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                  <div class="dropdown-list-image mr-3">
+                    <img class="rounded-circle" src="https://source.unsplash.com/AU4VPcFN4LE/60x60" alt="">
+                    <div class="status-indicator"></div>
+                  </div>
+                  <div>
+                    <div class="text-truncate">I have the photos that you ordered last month, how would you like them sent to you?</div>
+                    <div class="small text-gray-500">Jae Chun · 1d</div>
+                  </div>
+                </a>
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                  <div class="dropdown-list-image mr-3">
+                    <img class="rounded-circle" src="https://source.unsplash.com/CS2uCrpNzJY/60x60" alt="">
+                    <div class="status-indicator bg-warning"></div>
+                  </div>
+                  <div>
+                    <div class="text-truncate">Last month's report looks great, I am very happy with the progress so far, keep up the good work!</div>
+                    <div class="small text-gray-500">Morgan Alvarez · 2d</div>
+                  </div>
+                </a>
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                  <div class="dropdown-list-image mr-3">
+                    <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60" alt="">
+                    <div class="status-indicator bg-success"></div>
+                  </div>
+                  <div>
+                    <div class="text-truncate">Am I a good boy? The reason I ask is because someone told me that people say this to all dogs, even if they aren't good...</div>
+                    <div class="small text-gray-500">Chicken the Dog · 2w</div>
+                  </div>
+                </a>
+                <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
+              </div>
+            </li>
+
+            <div class="topbar-divider d-none d-sm-block"></div>
+
+            <!-- Nav Item - User Information -->
+            <li class="nav-item dropdown no-arrow">
+              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{username}}</span>
+                <img class="img-profile rounded-circle" src="img/profile.jpg">
+              </a>
+              <!-- Dropdown - User Information -->
+              <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                <a class="dropdown-item" href="user.html">
+                  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Profile
+                </a>
+                <a class="dropdown-item" href="#">
+                  <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Settings
+                </a>
+                <a class="dropdown-item" href="#">
+                  <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Activity Log
+                </a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Logout
+                </a>
+              </div>
+            </li>
+
+          </ul>
+
+        </nav>
+        <!-- End of Topbar -->
+        <!-- Begin Page Content -->
+        <div class="container-fluid">
+
+          <!-- Page Heading -->
+          <h1 class="h3 mb-2 text-gray-800"><i v-text="garden_owner"></i>的花园</h1>
+          <p class="mb-4">花园/阳台/室内植物实时环境信息</p>
+
+          <!-- Content Row -->
+
+            <div class="row">
+            <!-- Earnings (Monthly) Card Example -->
+            <div class="col-xl-12 col-md-6 mb-4" id="dest">
+                <div class="card border-left-info shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">正在加载数据...</div>
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col-auto">
+                                        <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800" id="heartused">0%</div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="progress progress-sm mr-2">
+                                            <div class="progress-bar bg-success" role="progressbar" id="heartvalue" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" ></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-auto"><!---->
+                                <i class="fas fa-clipboard-list fa-2x text-gray-300" title="发布公告"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            </div>
+          <!-- Content Row -->
+          <div class="row">
+
+            <div class="col-xl-8 col-lg-7">
+
+              <!-- Area Chart -->
+              <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary">CO2浓度变化</h6>
+                </div>
+                <div class="card-body" id="autore">
+                  <div class="chart-area" id="co2">
+                  </div>
+                  <hr>
+                </div>
+              </div>
+
+              <!-- Bar Chart -->
+              <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary">光照强度</h6>
+                </div>
+                <div class="card-body">
+                  <div class="chart-area" id="light">
+                  </div>
+                  <hr>
+                </div>
+              </div>
+
+            </div>
+
+
+
+            <!-- Donut Chart -->
+            <div class="col-xl-4 col-lg-5">
+              <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary">含水量变化</h6>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                  <div class="chart-pie pt-4" id="waterkept">
+                  </div>
+                  <hr>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+
+          <div class="col-xl-12 col-lg-7">
+
+            <!-- Area Chart -->
+            <div class="card shadow mb-4">
+              <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">内部湿度变化</h6>
+              </div>
+              <div class="card-body">
+                <div class="chart-area" id="humiin">
+                </div>
+                <hr>
+              </div>
+            </div>
+
+            <!-- Bar Chart -->
+            <div class="card shadow mb-4">
+              <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">内部温度变化</h6>
+              </div>
+              <div class="card-body">
+                <div class="chart-bar" id="tempin">
+                </div>
+                <hr>
+              </div>
+            </div>
+
+          </div>
+
+            <!--=========================================================================Charts End==================================================================================-->
+
+        </div>
+        <!-- /.container-fluid -->
+
+      </div>
+      <!-- End of Main Content -->
+
+      <!-- Footer -->
+      <footer class="sticky-footer bg-white">
+        <div class="container my-auto">
+          <div class="copyright text-center my-auto">
+            <span>Copyright &copy; 2020.Amazing-Balcony All rights reserved.<a target="_blank" href="https://www.aprildykj.com"></a>立体式阳台植物栽种系统</span>
+          </div>
+        </div>
+      </footer>
+      <!-- End of Footer -->
+
+    </div>
+    <!-- End of Content Wrapper -->
+
+  </div>
+  <!-- End of Page Wrapper -->
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+  <!-- Logout Modal-->
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+          <a class="btn btn-primary" href="login.html">Logout</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!--============================================加载动画===================================================-->
+
+  <script>
+
+      var cpu = [5,6,5,6,4,7,8,9,8,7,6,5,4,3,2,11,12,1,23,35,45,67,34,23,5,6,6,6,6];
+      var bpsin = [25,5,55,56,34,17,28,93,18,47,36,55,24,83,12,61,82,41,23,35,45,67,34,23,25,46,56,56,66];
+      var bpsout = [15,25,35,16,34,47,18,33,15,47,16,35,24,43,12,26,22,31,13,5,35,27,34,23,15,36,16,26,16];
+      var ram = [85,65,45,36,64,27,28,93,18,27,36,75,64,23,72,11,2,51,73,85,15,27,64,73,85,66,56,26,16];
+      var heart = [1,2,3,4,5,6,7,8,9,10,16,26,37,48,58,69,78,88,90,91,92,92,93,94,95,96,97,98,99,100,100,100,100,100,];
+      var i = 0;
+      setInterval(getList,300);
+      function getList(){
+          if(i > 32){
+              $("#dest").css("display","none");
+              $("#heartused").text("Done!");
+          }
+          var widthcpu = "width: "+cpu[i]+"%";
+          var widthbpsin = "width: "+bpsin[i]+"%";
+          var widthbpsout = "width: "+bpsout[i]+"%";
+          var widthram = "width: "+ram[i]+"%";
+          var widthheart = "width: "+heart[i]+"%";
+          $("#cupused").text(cpu[i] +"%");
+          $("#bpsinused").text(bpsin[i] +"%");
+          $("#bpsoutused").text(bpsout[i] +"%");
+          $("#ramused").text(ram[i] +"%");
+          $("#heartused").text(heart[i] +" bpm");
+          $("#cpuvalue").attr({style:widthcpu});
+          $("#bpsinvalue").attr({style:widthbpsin});
+          $("#bpsoutvalue").attr({style:widthbpsout});
+          $("#ramvalue").attr({style:widthram});
+          $("#heartvalue").attr({style:widthheart});
+
+          i++;
+      }
+  </script>
+  <!--============================================加载动画===================================================-->
+
+  <!-- Bootstrap core JavaScript-->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+
+  <!--============================================加载动画===================================================-->
+
+  <script>
+      var heart = [1,2,3,4,5,6,7,8,9,10,16,26,37,48,58,69,78,88,90,91,92,92,93,94,95,96,97,98,99,100,100,100,100,100,];
+      var i = 0;
+      setInterval(getList,300);
+      function getList(){
+          if(i > 32){
+              $("#dest").css("display","none");
+              $("#heartused").text("Done!");
+          }
+          var widthheart = "width: "+heart[i]+"%";
+          $("#heartused").text(heart[i] +" bpm");
+          $("#heartvalue").attr({style:widthheart});
+          i++;
+      }
+  </script>
+  <!--============================================加载动画===================================================-->
+
+  <!-- Custom scripts for all pages-->
+  <script src="js/sb-admin-2.min.js"></script>
+
+  <!-- Page level plugins -->
+
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="js/vue.js"></script>
+
+  <script src="js/jquery.cookie.js"></script>
+  <!--==========================================VUE==========================================-->
+
+  <script>
+
+    var name = localStorage.getItem("username");
+    var garden_name = localStorage.getItem("garden_owner");
+    var visi = $.cookie('counter')
+    var app = new Vue({
+
+      mounted:function(){
+        this.doalert();//需要触发的函数
+      },
+      el: '#wrapper',
+      data: {
+        garden_owner: garden_name,
+        username: name,
+        alert: [],
+        announcement: [],
+        message: [],
+        levels: [],
+        reminds: [],
+        tmdalert: [],
+        tmdannouncement: [],
+        tmdmessage: [],
+        tmdlevels: [],
+        tmdreminds: [],
+        alert_sum: 0,
+        message_sum: 0,
+        modified_TIME: "",
+        contain: "",
+        visits: visi,
+        index_num_user: "",
+        index_num_message: "",
+        index_num_alert: "",
+      },
+      methods: {
+
+        doalert:function(){
+          var that = this;
+
+
+          axios.all([
+
+            axios({
+              method: 'get',
+              url: 'http://47.100.248.118:8888/getAlerts',
+              changeOrigin: false,
+              withCredentials: true,
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              data: JSON.stringify({
+
+              })
+            }),
+
+            axios({
+              method: 'get',
+              url: 'http://47.100.248.118:8888/showAnnouncements/1',
+              changeOrigin: false,
+              withCredentials: true,
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              data: JSON.stringify({
+
+              })
+            }),
+
+            axios({
+              method: 'get',
+              url: 'http://47.100.248.118:8888/userMsg',
+              changeOrigin: false,
+              withCredentials: true,
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              data: JSON.stringify({
+
+              })
+            }),
+
+            axios({
+              method: 'get',
+              url: 'http://47.100.248.118:8888/levels',
+              changeOrigin: false,
+              withCredentials: true,
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              data: JSON.stringify({
+
+              })
+            }),
+
+            axios({
+              method: 'get',
+              url: 'http://47.100.248.118:8888/remind',
+              changeOrigin: false,
+              withCredentials: true,
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              data: JSON.stringify({
+
+              })
+            }),
+
+            axios({
+              method: 'get',
+              url: 'http://47.100.248.118:8888/index_num',
+              changeOrigin: false,
+              withCredentials: true,
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              data: JSON.stringify({
+
+              })
+            })
+
+          ]).then(axios.spread(function (alert, announcement, message, levels, reminds, index_num) {
+
+            that.contain = announcement.data[0].contain;
+            that.modified_TIME = announcement.data[0].modified_TIME;
+            that.tmdalert = alert.data;
+            that.tmdannouncement = announcement.data;
+            that.tmdmessage = message.data;
+
+            that.index_num_user = index_num.data[0];
+            that.index_num_message = index_num.data[1];
+            that.index_num_alert = index_num.data[2];
+
+            //--------------------------迷惑代码---------------------------//
+            var i,j;
+            for ( i=0;i<that.tmdalert.length;i++){
+              if(that.tmdalert[i].state == "0"){
+                j = 0;
+                that.alert_sum++;
+                var tmp = new Array(10);
+                tmp[j] = that.tmdalert[i];
+                that.alert[j] = tmp[j];
+                j++;
+              }
+            }
+
+            //--------------------------迷惑代码---------------------------//
+            var m,n;
+            for ( m=0;m<that.tmdmessage.length;m++){
+              if(that.tmdmessage[m].state == "0"){
+                n = 0;
+                that.message_sum++;
+                var tmp = new Array(10);
+                tmp[n] = that.tmdmessage[m];
+                that.alert[n] = tmp[n];
+                j++;
+              }
+            }
+
+            localStorage.setItem("tmdalert",JSON.stringify(that.alert));
+            localStorage.setItem("tmdannouncement",JSON.stringify(that.tmdannouncement));
+          }));
+
+        },
+
+        doupdateAlert: function(index){
+          var that = this;
+          var list = localStorage.getItem("tmdalert");
+          var url1 = index;
+          var url2 = "http://47.100.248.118:8888/updateAlert/"
+          var url3 = "/0"
+          axios({
+            method: 'get',
+            url: url2+url1+url3,
+            changeOrigin: false,
+            withCredentials: true,
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            data: JSON.stringify({
+
+            })
+          }).then(function(result){
+            window.location.href='index.html'
+          });
+        },
+
+        doupdateMessage: function(index){
+          var that = this;
+          var url1 = index;
+          var url2 = "http://47.100.248.118:8888/updateMsg/"
+          var url3 = "/0"
+          axios({
+            method: 'get',
+            url: url2+url1+url3,
+            changeOrigin: false,
+            withCredentials: true,
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            data: JSON.stringify({
+
+            })
+          }).then(function(result){
+            window.location.href='index.html'
+          });
+        },
+      }
+    })
+  </script>
+
+  <script src="js/echarts.min.js"></script>
+  <script src="js/chartco2.js"></script>
+  <script src="js/chartlight.js"></script>
+  <script src="js/chartwaterkept.js"></script>
+  <script src="js/chartwaterremain.js"></script>
+  <script src="js/charthumiin.js"></script>
+  <script src="js/charthumiout.js"></script>
+  <script src="js/charttempin.js"></script>
+  <script src="js/charttempout.js"></script>
+
+</body>
+
+</html>
